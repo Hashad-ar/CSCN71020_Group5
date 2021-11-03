@@ -3,10 +3,12 @@
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "math.h"
 
 int side = 0;
 
 int main() {
+
 	bool continueProgram = true;
 	while (continueProgram) {
 		printWelcome();
@@ -28,6 +30,7 @@ int main() {
 			break;
 		default:
 			printf_s("Invalid value entered.\n");
+			continueProgram = false;				//Added to fix infinite loop
 			continueProgram = false;
 			break;
 		}
