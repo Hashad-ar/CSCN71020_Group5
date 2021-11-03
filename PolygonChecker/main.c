@@ -28,6 +28,7 @@ int main() {
 			break;
 		default:
 			printf_s("Invalid value entered.\n");
+			continueProgram = false;
 			break;
 		}
 	}
