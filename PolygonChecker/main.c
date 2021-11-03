@@ -30,7 +30,7 @@ int main() {
 			break;
 		default:
 			printf_s("Invalid value entered.\n");
-			continueProgram = false;
+			continueProgram = false;				//Added to fix infinite loop
 			break;
 		}
 	}
