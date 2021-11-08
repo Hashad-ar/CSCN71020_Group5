@@ -7,6 +7,8 @@
 
 int side = 0;
 
+//Hello from Prof. Coleshill
+
 int main() {
 
 	bool continueProgram = true;
