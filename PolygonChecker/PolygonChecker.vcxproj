@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Desktop\SOFT IMP GROUP PROJECT\PolygonChecker\rectangleSolver.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Desktop\SOFT IMP GROUP PROJECT\PolygonChecker\rectangleSolver.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="triangleSolver.h" />
   </ItemGroup>
