@@ -21,6 +21,22 @@ int main() {
 
 		switch (shapeChoice)
 		{
+
+		case 2: // added another case for the rectangle and intiliazed the x and y axis 
+			printf_s("Rectangle selected.\n");
+			int Rectangle_xAxis[4] = { 0, 0, 0, 0 };
+			int Rectangle_yAxis[4] = { 0, 0, 0, 0 };
+			getRectanglePoints(Rectangle_xAxis, Rectangle_yAxis);
+
+			/*for (int i = 0; i < 4; i++)
+			{
+				printf("the %d point is: \n", (i + 1));
+				printf("x: %d,  y: %d\n", Rectangle_xAxis[i], Rectangle_yAxis[i]);
+			}
+			break;
+			*/
+
+
 		case 1:
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
@@ -29,7 +45,9 @@ int main() {
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
 			break;
-	
+
+		
+
 		case 0:
 			continueProgram = false;
 			break;
@@ -51,6 +69,7 @@ void printWelcome() {
 }
 
 int printShapeMenu() {
+	printf_s("2. Rectangle\n");
 	printf_s("1. Triangle\n");
 	printf_s("0. Exit\n");
 
@@ -70,14 +89,18 @@ int* getTriangleSides(int* triangleSides) {
 	}
 	return triangleSides;
 }
-//added input for RectangleAngles
-int* getRectangleAngles(int* rectangleAngles) {
-	printf_s("Enter the 4 coordinates of the rectangle:");
-	
-	for (int i = 1; i< 4; i++)
+
+//added input for Rectangle points
+void getRectanglePoints(int* xAxis, int* yAxis)
+{
+	int j = 1; // counter for the order of the point 
+	for (int i = 0; i< 4; i++)
 	{
-		scanf_s("%d", &xaxis[i]);
-		scanf_s("%d", &yaxis[i]);
+	
+		printf_s("Enter the coordinates for the %d's point :\n", j);
+		scanf_s("%d", &xAxis[i]);
+		scanf_s("%d", &yAxis[i]);
+		j++;
 	}
-	return rectangleAngles;
+	
 }	
