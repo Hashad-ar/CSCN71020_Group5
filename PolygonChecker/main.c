@@ -4,6 +4,7 @@
 #include "main.h"
 #include "triangleSolver.h"
 #include "math.h"
+#include "rectangleSolver.h"
 
 int side = 0;
 
@@ -28,13 +29,13 @@ int main() {
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
 			break;
+	
 		case 0:
 			continueProgram = false;
 			break;
 		default:
 			printf_s("Invalid value entered.\n");
 			continueProgram = false;				//Added to fix infinite loop
-			continueProgram = false;
 			break;
 		}
 	}
@@ -69,3 +70,14 @@ int* getTriangleSides(int* triangleSides) {
 	}
 	return triangleSides;
 }
+//added input for RectangleAngles
+int* getRectangleAngles(int* rectangleAngles) {
+	printf_s("Enter the 4 coordinates of the rectangle:");
+	
+	for (int i = 1; i< 4; i++)
+	{
+		scanf_s("%d", &xaxis[i]);
+		scanf_s("%d", &yaxis[i]);
+	}
+	return rectangleAngles;
+}	
