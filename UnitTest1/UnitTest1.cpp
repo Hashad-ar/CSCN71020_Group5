@@ -20,7 +20,7 @@ namespace UnitTest1
 			int side1 = 3;
 			int side2 = 3;
 			int side3 = 3;
-			char* result = "Equilateral triangle";
+			char* result = "Equilateral triangle\n";
 			Assert::AreEqual(result, analyzeTriangle(side1, side2, side3));
 		}
 		//Testing if the function will output the correct result for an Isosceles triangle using 2, 3, 3 for side lengths.
@@ -29,7 +29,7 @@ namespace UnitTest1
 			int side1 = 2;
 			int side2 = 3;
 			int side3 = 3;
-			char* result = "Isosceles triangle";
+			char* result = "Isosceles triangle\n";
 			Assert::AreEqual(result, analyzeTriangle(side1, side2, side3));
 		}
 		//Testing if the function will output the correct result for a Scalene triangle using 3, 4, 5.
@@ -38,7 +38,7 @@ namespace UnitTest1
 			int side1 = 3;
 			int side2 = 4;
 			int side3 = 5;
-			char* result = "Scalene triangle";
+			char* result = "Scalene triangle\n";
 			Assert::AreEqual(result, analyzeTriangle(side1, side2, side3));
 		}
 		//Testing if the function will output the correct result for invalid input that's not a triangle using -3, 0, 3 for side lengths.
@@ -47,7 +47,7 @@ namespace UnitTest1
 			int side1 = -3;
 			int side2 = 0;
 			int side3 = 3;
-			char* result = "Not a triangle";
+			char* result = "Not a triangle\n";
 			Assert::AreEqual(result, analyzeTriangle(side1, side2, side3));
 		}
 	};
