@@ -29,7 +29,7 @@ char* analyzeRectangle(double xaxis[4], double yaxis[4])
 	{
 		perimeterOfShape = side11 + side12 + side13 + side14;
 		printf("The perimeter is %.2f\n", perimeterOfShape);
-		return "It's a rectangle";
+		return "It's a Rectangle";
 		areaOfRectangle = side11 * side13;
 		printf("The area of the rectangle is %.2f", areaOfRectangle);
 	}
@@ -37,7 +37,7 @@ char* analyzeRectangle(double xaxis[4], double yaxis[4])
 	{
 		perimeterOfShape = side21 + side22 + side23 + side24;
 		printf("The perimeter is %.2f\n", perimeterOfShape);
-		return "It's a rectangle";
+		return "It's a Rectangle";
 		areaOfRectangle = side21 * side23;
 		printf("The area of the rectangle is %.2f", areaOfRectangle);
 	}
@@ -45,7 +45,7 @@ char* analyzeRectangle(double xaxis[4], double yaxis[4])
 	{
 		perimeterOfShape = side31 + side32 + side33 + side34;
 		printf("The perimeter is %.2f\n", perimeterOfShape);
-		return "It's a rectangle";
+		return "It's a Rectangle";
 		areaOfRectangle = side31 * side33;
 		printf("The area of the rectangle is %.2f", areaOfRectangle);
 	}

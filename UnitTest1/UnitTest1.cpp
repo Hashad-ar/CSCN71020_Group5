@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
-#include "main.h"
-#include "triangleSolver.h"
-#include "rectangleSolver.h"
+extern "C" {
+	#include "main.h"
+	#include "triangleSolver.h"
+	#include "rectangleSolver.h"
+}
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -113,15 +115,13 @@ namespace UnitTest1
 	TEST_CLASS(Rectangle)
 	{
 	public:
-
 		TEST_METHOD(ItIsRectangle)
 		{
 			double xaxis[] = { 0, 3, 0, 3 };
 			double yaxis[] = { 0, 0, 6, 6 };
 
-			char* result = "It's a rectangle";
+			char* result = "It's a Rectangle";
 			Assert::AreEqual(result, analyzeRectangle(xaxis, yaxis));
-
 		}
 		TEST_METHOD(ItIsNotRectangle)
 		{
