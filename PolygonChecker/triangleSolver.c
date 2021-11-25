@@ -4,7 +4,8 @@
 #include "math.h"
 #include "triangleSolver.h"
 
-char* analyzeTriangle(int side1, int side2, int side3) {
+char* analyzeTriangle(int side1, int side2, int side3) 
+{
 	char* result = "";
 	if (side1 <= 0 || side2 <= 0 || side3 <= 0 || side1 + side2 < side3 || side2 + side3 < side1 || side3 + side1 < side2) // added triangle inequality theorem
 	{
@@ -14,13 +15,21 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	{
 		result = "Equilateral triangle\n";
 		printf("All angles are 60 degrees.\n"); // added an output for Equilateral triangle's angles 
+	}
+
+	else
+	{
+		analyzeAngle(side1, side2, side3); 
 
 	}
-	else if (side1 == side2 && side1 == side3) 
-	{
-		result = "Equilateral triangle\n";
-	}
-	else if ((side1 == side2 && side1 != side3) || 
+	
+}
+	
+char* analyzeAngle(int side1, int side2, int side3) 
+{
+	char* result = "";
+
+	 if ((side1 == side2 && side1 != side3) || 
 		(side1 == side3 && side1 != side2) || 
 		(side2 == side3 && side3 != side1))  //fixed the missing scenario where side 2 and 3 were the same size.
 	{
@@ -35,7 +44,7 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 
 		printf("first angle is %.1f \n second angle is %.1f \n third angle is %.1f \n", angle1, angle2, angle3); //added output of the angles
 	}
-	else 
+	else
 	{
 		result = "Scalene triangle\n";
 
