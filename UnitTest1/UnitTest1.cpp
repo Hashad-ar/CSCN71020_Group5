@@ -160,36 +160,22 @@ namespace UnitTest1
 			Assert::AreEqual(result2, FuncResult[1]);
 			Assert::AreEqual(result3, FuncResult[2]);
 		}
-
-		TEST_METHOD(AnglesInsideTriangle_Scalene)
+		
+		TEST_METHOD(AnglesInsideTriangle_NotATriangle)
+			//Testing if the function will output the correct result for the angles of a non triangle input, which would return -1 on all cases.
 		{
-			/*int side1 = 3;
-			int side2 = 4;
-			int side3 = 5;
-			float result1 = 90;
-			float result2 = 36.86989764584;
-			float result3 = 53.130102354156;
-
-			float* arrr[3] = analyzeAngle(side1, side2, side3);
-
-
-			Assert::AreEqual(result1, angle1);
-			Assert::AreEqual(result2, angle2);
-			Assert::AreEqual(result3, angle3);
-			*/
 			int side1 = 3;
-			int side2 = 4;
+			int side2 = 10;
 			int side3 = 5;
-			float result1 = 90; // desired results 
-			float result2 = 36.86989764584;
-			float result3 = 53.130102354156;
+			float result = -1; // desired results 
+			
 			float* FuncResult = analyzeAngle(side1, side2, side3);
 
-			Assert::AreEqual(result1, FuncResult[0]);
-			Assert::AreEqual(result2, FuncResult[1]);
-			Assert::AreEqual(result3, FuncResult[2]);
+			Assert::AreEqual(result, FuncResult[0]);// supposed to return all angles as being -1, since this combination of sides does not return proper angles and does not create a triangle
+			Assert::AreEqual(result, FuncResult[1]);
+			Assert::AreEqual(result, FuncResult[2]);
 		}
-	};
+	};	
 
 	TEST_CLASS(Rectangle)
 	{

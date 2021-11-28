@@ -33,6 +33,16 @@ char* analyzeTriangle(int side1, int side2, int side3)
 float* analyzeAngle(int side1, int side2, int side3) 
 {
 	float angles[3];
+		
+
+		if (side1 <= 0 || side2 <= 0 || side3 <= 0 || side1 + side2 <= side3 || side2 + side3 <= side1 || side3 + side1 <= side2) //  triangle inequality theorem
+		{
+				angles[0] = -1;
+				angles[1] = -1;
+				angles[2] = -1;
+				return angles; 
+				// returns every angle as -1 if the input is not valid to make a triangle. 
+		}
 
 		// added calculation to the angles 
 		float temp1 = (float)(side1 * side1 + side2 * side2 - (side3 * side3)) / (2 * side1 * side2);
