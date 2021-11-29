@@ -5,59 +5,71 @@
 #include "rectangleSolver.h"
 //added new main file for rectangle feature
 
-char* analyzeRectangle(double xaxis[4], double yaxis[4])
+#define M_PI 3.14159265358979323846				//To convert radians to degree
+double RightAngleRadian = 90 * M_PI / 180;	//90 degree angle to radian value
+
+char* analyzeRectangle(COORDINATES Rectangle_Points[])
 {
-	double side11 = sqrt((xaxis[1] - xaxis[0]) * (xaxis[1] - xaxis[0]) + (yaxis[1] - yaxis[0]) * (yaxis[1] - yaxis[0]));
-	double side12 = sqrt((xaxis[2] - xaxis[1]) * (xaxis[2] - xaxis[1]) + (yaxis[2] - yaxis[1]) * (yaxis[2] - yaxis[1]));
-	double side13 = sqrt((xaxis[3] - xaxis[2]) * (xaxis[3] - xaxis[2]) + (yaxis[3] - yaxis[2]) * (yaxis[3] - yaxis[2]));
-	double side14 = sqrt((xaxis[0] - xaxis[3]) * (xaxis[0] - xaxis[3]) + (yaxis[0] - yaxis[3]) * (yaxis[0] - yaxis[3]));
-
-	double side21 = sqrt((xaxis[2] - xaxis[0]) * (xaxis[2] - xaxis[0]) + (yaxis[2] - yaxis[0]) * (yaxis[2] - yaxis[0]));
-	double side22 = sqrt((xaxis[3] - xaxis[2]) * (xaxis[3] - xaxis[2]) + (yaxis[3] - yaxis[2]) * (yaxis[3] - yaxis[2]));
-	double side23 = sqrt((xaxis[1] - xaxis[3]) * (xaxis[1] - xaxis[3]) + (yaxis[1] - yaxis[3]) * (yaxis[1] - yaxis[3]));
-	double side24 = sqrt((xaxis[0] - xaxis[1]) * (xaxis[0] - xaxis[1]) + (yaxis[0] - yaxis[1]) * (yaxis[0] - yaxis[1]));
-
-	double side31 = sqrt((xaxis[3] - xaxis[0]) * (xaxis[3] - xaxis[0]) + (yaxis[3] - yaxis[0]) * (yaxis[3] - yaxis[0]));
-	double side32 = sqrt((xaxis[2] - xaxis[3]) * (xaxis[2] - xaxis[3]) + (yaxis[2] - yaxis[3]) * (yaxis[2] - yaxis[3]));
-	double side33 = sqrt((xaxis[1] - xaxis[2]) * (xaxis[1] - xaxis[2]) + (yaxis[1] - yaxis[2]) * (yaxis[1] - yaxis[2]));
-	double side34 = sqrt((xaxis[0] - xaxis[1]) * (xaxis[0] - xaxis[1]) + (yaxis[0] - yaxis[1]) * (yaxis[0] - yaxis[1]));
-
+	double sides[3][4];
 	double perimeterOfShape;
 	double areaOfRectangle;
 
-	if (side11 == side13 && side12 == side14 && acos((side11 * side11 + side13 * side13) / (2*side11*side13)) == 1.57)
+	sides[0][0] = sqrt( pow(abs(Rectangle_Points[1].x_axis - Rectangle_Points[0].x_axis), 2) + pow(abs(Rectangle_Points[1].y_axis - Rectangle_Points[0].y_axis), 2));
+	sides[0][1] = sqrt( pow(abs(Rectangle_Points[2].x_axis - Rectangle_Points[1].x_axis), 2) + pow(abs(Rectangle_Points[2].y_axis - Rectangle_Points[1].y_axis), 2));
+	sides[0][2] = sqrt( pow(abs(Rectangle_Points[3].x_axis - Rectangle_Points[2].x_axis), 2) + pow(abs(Rectangle_Points[3].y_axis - Rectangle_Points[2].y_axis), 2));
+	sides[0][3] = sqrt( pow(abs(Rectangle_Points[0].x_axis - Rectangle_Points[3].x_axis), 2) + pow(abs(Rectangle_Points[0].y_axis - Rectangle_Points[3].y_axis), 2));
+
+	double extraSides1 = sqrt(pow(abs(Rectangle_Points[1].x_axis - Rectangle_Points[3].x_axis), 2) + pow(abs(Rectangle_Points[1].y_axis - Rectangle_Points[3].y_axis), 2));
+	double extraAngle1 = acos((sides[0][1] * sides[0][1] + sides[0][3] * sides[0][3] - extraSides1 * extraSides1) / (2 * sides[0][1] * sides[0][3]));
+
+	sides[1][0] = sqrt( pow(abs(Rectangle_Points[2].x_axis - Rectangle_Points[0].x_axis), 2) + pow(abs(Rectangle_Points[2].y_axis - Rectangle_Points[0].y_axis), 2));
+	sides[1][1] = sqrt( pow(abs(Rectangle_Points[3].x_axis - Rectangle_Points[2].x_axis), 2) + pow(abs(Rectangle_Points[3].y_axis - Rectangle_Points[2].y_axis), 2));
+	sides[1][2] = sqrt( pow(abs(Rectangle_Points[1].x_axis - Rectangle_Points[3].x_axis), 2) + pow(abs(Rectangle_Points[1].y_axis - Rectangle_Points[3].y_axis), 2));
+	sides[1][3] = sqrt( pow(abs(Rectangle_Points[0].x_axis - Rectangle_Points[1].x_axis), 2) + pow(abs(Rectangle_Points[0].y_axis - Rectangle_Points[1].y_axis), 2));
+
+	double extraSides2 = sqrt(pow(abs(Rectangle_Points[2].x_axis - Rectangle_Points[1].x_axis), 2) + pow(abs(Rectangle_Points[2].y_axis - Rectangle_Points[1].y_axis), 2));
+	double extraAngle2 = acos((sides[1][1] * sides[1][1] + sides[1][3] * sides[1][3] - extraSides2 * extraSides2) / (2 * sides[1][1] * sides[1][3]));
+
+	sides[2][0] = sqrt( pow(abs(Rectangle_Points[3].x_axis - Rectangle_Points[0].x_axis), 2) + pow(abs(Rectangle_Points[3].y_axis - Rectangle_Points[0].y_axis), 2));
+	sides[2][1] = sqrt( pow(abs(Rectangle_Points[1].x_axis - Rectangle_Points[3].x_axis), 2) + pow(abs(Rectangle_Points[1].y_axis - Rectangle_Points[3].y_axis), 2));
+	sides[2][2] = sqrt( pow(abs(Rectangle_Points[2].x_axis - Rectangle_Points[1].x_axis), 2) + pow(abs(Rectangle_Points[2].y_axis - Rectangle_Points[1].y_axis), 2));
+	sides[2][3] = sqrt( pow(abs(Rectangle_Points[0].x_axis - Rectangle_Points[2].x_axis), 2) + pow(abs(Rectangle_Points[0].y_axis - Rectangle_Points[2].y_axis), 2));
+	
+	double extraSides3 = sqrt(pow(abs(Rectangle_Points[3].x_axis - Rectangle_Points[2].x_axis), 2) + pow(abs(Rectangle_Points[3].y_axis - Rectangle_Points[2].y_axis), 2));
+	double extraAngle3 = acos((sides[2][1] * sides[2][1] + sides[2][3] * sides[2][3] - extraSides3 * extraSides3) / (2 * sides[2][1] * sides[2][3]));
+
+	if (sides[0][0] == sides[0][2] && sides[0][1] == sides[0][3] && extraAngle1 == RightAngleRadian)
 	{
-		perimeterOfShape = side11 + side12 + side13 + side14;
+		perimeterOfShape = sides[0][0] + sides[0][1] + sides[0][2] + sides[0][3];
 		printf("The perimeter is %.2f\n", perimeterOfShape);
-		return "It's a Rectangle";
-		areaOfRectangle = side11 * side13;
-		printf("The area of the rectangle is %.2f", areaOfRectangle);
+		areaOfRectangle = sides[0][0] * sides[0][1];
+		printf("The area of the rectangle is %.2f\n", areaOfRectangle);
+
+		return "It's a Rectangle\n";
 	}
-	else if (side21 == side23 && side22 == side24 && acos((side21 * side21 + side23 * side23) / (2 * side21 * side23)) == 1.57)
+	else if (sides[1][0] == sides[1][2] && sides[1][1] == sides[1][3] && extraAngle2 == RightAngleRadian)
 	{
-		perimeterOfShape = side21 + side22 + side23 + side24;
+		perimeterOfShape = sides[1][0] + sides[1][1] + sides[1][2] + sides[1][3];
 		printf("The perimeter is %.2f\n", perimeterOfShape);
-		return "It's a Rectangle";
-		areaOfRectangle = side21 * side23;
-		printf("The area of the rectangle is %.2f", areaOfRectangle);
+		areaOfRectangle = sides[1][0] * sides[1][1];
+		printf("The area of the rectangle is %.2f\n", areaOfRectangle);
+
+		return "It's a Rectangle\n";
 	}
-	else if (side31 == side33 && side32 == side34 && acos((side31 * side31 + side33 * side33) / (2 * side31 * side33)) == 1.57)
+	else if (sides[2][0] == sides[2][2] && sides[2][1] == sides[2][3] && extraAngle3 == RightAngleRadian)
 	{
-		perimeterOfShape = side31 + side32 + side33 + side34;
+		perimeterOfShape = sides[2][0] + sides[2][1] + sides[2][2] + sides[2][3];
 		printf("The perimeter is %.2f\n", perimeterOfShape);
-		return "It's a Rectangle";
-		areaOfRectangle = side31 * side33;
-		printf("The area of the rectangle is %.2f", areaOfRectangle);
+		areaOfRectangle = sides[2][0] * sides[2][1];
+		printf("The area of the rectangle is %.2f\n", areaOfRectangle);
+
+		return "It's a Rectangle\n";
 	}
 	else 
 	{
-		perimeterOfShape = side11 + side12 + side13 + side14;
+		perimeterOfShape = sides[0][0] + sides[0][1] + sides[0][2] + sides[0][3];
 		printf("The perimeter is %.2f\n", perimeterOfShape);
-		return "Not a Rectangle";
+
+		return "Not a Rectangle\n";
 	}
-
-	
-
-	//printf("Side1 is %.2f, Side2 is %.2f, Side3 is %.2f, Side4 is %.2f", side11, side12, side13, side14);
-
 }

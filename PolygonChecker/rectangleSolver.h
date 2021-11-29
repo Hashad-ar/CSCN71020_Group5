@@ -1,4 +1,11 @@
 #pragma once
 //added new header file for rectangle input
 
-char* analyzeRectangle(double xaxis[4], double yaxis[4]);
+typedef struct RECTANGLE_COORDINATES
+{
+	double x_axis;
+	double y_axis;
+}COORDINATES;
+
+char* analyzeRectangle(COORDINATES[]);
+

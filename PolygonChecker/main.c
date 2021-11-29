@@ -8,6 +8,7 @@
 #include "angleSolver.h"
 
 int side = 0;
+COORDINATES Rectangle_Points[4] = { 0 };
 
 //Hello from Prof. Coleshill
 //Hello from dani
@@ -22,20 +23,12 @@ int main() {
 
 		switch (shapeChoice)
 		{
-
 		case 2: // added another case for the rectangle and intiliazed the x and y axis 
 			printf_s("Rectangle selected.\n");
-			int Rectangle_xAxis[4] = { 0, 0, 0, 0 };
-			int Rectangle_yAxis[4] = { 0, 0, 0, 0 };
-			getRectanglePoints(Rectangle_xAxis, Rectangle_yAxis);
-
-			/*for (int i = 0; i < 4; i++)
-			{
-				printf("the %d point is: \n", (i + 1));
-				printf("x: %d,  y: %d\n", Rectangle_xAxis[i], Rectangle_yAxis[i]);
-			}
+			getRectanglePoints(Rectangle_Points);
+			char* result2 = analyzeRectangle(Rectangle_Points);
+			printf_s("%s\n", result2);
 			break;
-			*/
 		case 1:
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
@@ -86,16 +79,14 @@ int* getTriangleSides(int* triangleSides) {
 }
 
 //added input for Rectangle points
-void getRectanglePoints(int* xAxis, int* yAxis)
+void getRectanglePoints(COORDINATES AxisArray[])
 {
-	int j = 1; // counter for the order of the point 
-	for (int i = 0; i< 4; i++)
+	for (int i = 0; i < 4; i++)
 	{
-	
-		printf_s("Enter the coordinates for the %d's point :\n", j);
-		scanf_s("%d", &xAxis[i]);
-		scanf_s("%d", &yAxis[i]);
-		j++;
+		printf_s("Enter the coordinates for point %d:\n", i + 1);
+		printf_s("X: ");
+		scanf_s("%lf",&AxisArray[i].x_axis);
+		printf_s("Y: ");
+		scanf_s("%lf",&AxisArray[i].y_axis);
 	}
-	
 }	

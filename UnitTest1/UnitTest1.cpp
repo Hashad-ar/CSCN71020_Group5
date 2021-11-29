@@ -63,12 +63,9 @@ namespace UnitTest1
 			int side3 = 3;
 			float result = 60;
 
-			/*The angle calculator function copied and pasted*/
-			float temp1 = (float)(side1 * side1 + side2 * side2 - (side3 * side3)) / (2 * side1 * side2);
-			float temp2 = (float)(side2 * side2 + side3 * side3 - side1 * side1) / (2 * side2 * side3);
-			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles 
-			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles 
-			float angle3 = 180 - angle1 - angle2;
+			float angle1 = analyzeAngle(side1, side2, side3)[0];
+			float angle2 = analyzeAngle(side1, side2, side3)[1];
+			float angle3 = analyzeAngle(side1, side2, side3)[2];
 
 			Assert::AreEqual(result, angle1);
 			Assert::AreEqual(result, angle2);
@@ -84,12 +81,9 @@ namespace UnitTest1
 			float result2 = 38.942441268981;
 			float result3 = 70.528779365509;
 
-			/*The angle calculator function copied and pasted*/
-			float temp1 = (float)(side1 * side1 + side2 * side2 - (side3 * side3)) / (2 * side1 * side2);
-			float temp2 = (float)(side2 * side2 + side3 * side3 - side1 * side1) / (2 * side2 * side3);
-			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles 
-			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles 
-			float angle3 = 180 - angle1 - angle2;
+			float angle1 = analyzeAngle(side1, side2, side3)[0];
+			float angle2 = analyzeAngle(side1, side2, side3)[1];
+			float angle3 = analyzeAngle(side1, side2, side3)[2];
 
 			Assert::AreEqual(result1, angle1);
 			Assert::AreEqual(result2, angle2);
@@ -105,12 +99,9 @@ namespace UnitTest1
 			float result2 = 36.86989764584;
 			float result3 = 53.130102354156;
 
-			/*The angle calculator function copied and pasted*/
-			float temp1 = (float)(side1 * side1 + side2 * side2 - (side3 * side3)) / (2 * side1 * side2);
-			float temp2 = (float)(side2 * side2 + side3 * side3 - side1 * side1) / (2 * side2 * side3);
-			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles 
-			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles 
-			float angle3 = 180 - angle1 - angle2;
+			float angle1 = analyzeAngle(side1, side2, side3)[0];
+			float angle2 = analyzeAngle(side1, side2, side3)[1];
+			float angle3 = analyzeAngle(side1, side2, side3)[2];
 
 			Assert::AreEqual(result1, angle1);
 			Assert::AreEqual(result2, angle2);
@@ -121,14 +112,14 @@ namespace UnitTest1
 	TEST_CLASS(Rectangle)
 	{
 	public:
-		//Testing if the function will output the correct result for a valid rectangle case using point values for the 4 x,y coordinates at 1. 0,0| 2. 3,0| 3. 0,6| 4. 3,6|.
+	/*	//Testing if the function will output the correct result for a valid rectangle case using point values for the 4 x,y coordinates at 1. 0,0| 2. 3,0| 3. 0,6| 4. 3,6|.
 		TEST_METHOD(ItIsRectangle)
 		{
 			double xaxis[] = { 0, 3, 0, 3 };
 			double yaxis[] = { 0, 0, 6, 6 };
 
 			char* result = "It's a Rectangle";
-			Assert::AreEqual(result, analyzeRectangle(xaxis, yaxis));
+			Assert::AreEqual(result, analyzeRectangle(xaxis[], yaxis[]));
 		}
 		//Testing if the function will output the correct result for an Invalid rectangle case using point values for the 4 x,y coordinates at 1. 5,0 | 2. 3,0 | 3. 0,6| 4. 3,6|.
 		TEST_METHOD(ItIsNotRectangle)
@@ -138,6 +129,6 @@ namespace UnitTest1
 
 			char* result = "Not a Rectangle";
 			Assert::AreEqual(result, analyzeRectangle(xaxis, yaxis));
-		}
-	};
+		}*/
+	}; 
 }
