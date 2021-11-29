@@ -2,9 +2,9 @@
 #include "CppUnitTest.h"
 
 extern "C" {
-	#include "main.h"
-	#include "triangleSolver.h"
-	#include "rectangleSolver.h"
+#include "main.h"
+#include "triangleSolver.h"
+#include "rectangleSolver.h"
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -76,8 +76,8 @@ namespace UnitTest1
 			The angle calculator function copied and pasted
 			float temp1 = (float)(side1 * side1 + side2 * side2 - (side3 * side3)) / (2 * side1 * side2);
 			float temp2 = (float)(side2 * side2 + side3 * side3 - side1 * side1) / (2 * side2 * side3);
-			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles 
-			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles 
+			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles
+			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles
 			float angle3 = 180 - angle1 - angle2;
 
 			Assert::AreEqual(result, angle1);
@@ -109,8 +109,8 @@ namespace UnitTest1
 
 			float temp1 = (float)(side1 * side1 + side2 * side2 - (side3 * side3)) / (2 * side1 * side2);
 			float temp2 = (float)(side2 * side2 + side3 * side3 - side1 * side1) / (2 * side2 * side3);
-			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles 
-			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles 
+			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles
+			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles
 			float angle3 = 180 - angle1 - angle2;
 
 			Assert::AreEqual(result1, angle1);
@@ -142,7 +142,7 @@ namespace UnitTest1
 			float result3 = 53.130102354156;
 
 			float* arrr[3] = analyzeAngle(side1, side2, side3);
-			
+
 
 			Assert::AreEqual(result1, angle1);
 			Assert::AreEqual(result2, angle2);
@@ -160,7 +160,7 @@ namespace UnitTest1
 			Assert::AreEqual(result2, FuncResult[1]);
 			Assert::AreEqual(result3, FuncResult[2]);
 		}
-		
+
 		TEST_METHOD(AnglesInsideTriangle_NotATriangle)
 			//Testing if the function will output the correct result for the angles of a non triangle input, which would return -1 on all cases.
 		{
@@ -168,14 +168,14 @@ namespace UnitTest1
 			int side2 = 10;
 			int side3 = 5;
 			float result = -1; // desired results 
-			
+
 			float* FuncResult = analyzeAngle(side1, side2, side3);
 
 			Assert::AreEqual(result, FuncResult[0]);// supposed to return all angles as being -1, since this combination of sides does not return proper angles and does not create a triangle
 			Assert::AreEqual(result, FuncResult[1]);
 			Assert::AreEqual(result, FuncResult[2]);
 		}
-	};	
+	};
 
 	TEST_CLASS(Rectangle)
 	{
