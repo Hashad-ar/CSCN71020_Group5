@@ -175,7 +175,7 @@ namespace UnitTest1
 			Assert::AreEqual(result, FuncResult[1]);
 			Assert::AreEqual(result, FuncResult[2]);
 		}
-	};
+	};	
 
 	TEST_CLASS(Rectangle)
 	{
