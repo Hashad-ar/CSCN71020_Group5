@@ -67,23 +67,6 @@ namespace UnitTest1
 		//Testing if the function will output the correct result for the angles inside an Equilateral triangle with expected result as 60 for all side lengths.
 		TEST_METHOD(AnglesInsideTriangle_Equilateral)
 		{
-			/*
-			int side1 = 3;
-			int side2 = 3;
-			int side3 = 3;
-			float result = 60;
-
-			The angle calculator function copied and pasted
-			float temp1 = (float)(side1 * side1 + side2 * side2 - (side3 * side3)) / (2 * side1 * side2);
-			float temp2 = (float)(side2 * side2 + side3 * side3 - side1 * side1) / (2 * side2 * side3);
-			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles
-			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles
-			float angle3 = 180 - angle1 - angle2;
-
-			Assert::AreEqual(result, angle1);
-			Assert::AreEqual(result, angle2);
-			Assert::AreEqual(result, angle3);
-			*/
 
 			int side1 = 3;
 			int side2 = 3;
@@ -99,24 +82,6 @@ namespace UnitTest1
 		//Testing if the function will output the correct result for the angles of an Isoceles triangle with expected result of approximately  39, 70.5, 70.5. 
 		TEST_METHOD(AnglesInsideTriangle_Isosceles)
 		{
-			/*
-			int side1 = 2;
-			int side2 = 3;
-			int side3 = 3;
-			float result1 = 70.528779365509;
-			float result2 = 38.942441268981;
-			float result3 = 70.528779365509;
-
-			float temp1 = (float)(side1 * side1 + side2 * side2 - (side3 * side3)) / (2 * side1 * side2);
-			float temp2 = (float)(side2 * side2 + side3 * side3 - side1 * side1) / (2 * side2 * side3);
-			float angle1 = acos(temp1) * (180 / 3.14159265358979323846); // converting radians to angles
-			float angle2 = acos(temp2) * (180 / 3.14159265358979323846); // converting radians to angles
-			float angle3 = 180 - angle1 - angle2;
-
-			Assert::AreEqual(result1, angle1);
-			Assert::AreEqual(result2, angle2);
-			Assert::AreEqual(result3, angle3);
-			*/
 
 			int side1 = 2;
 			int side2 = 3;
@@ -134,20 +99,6 @@ namespace UnitTest1
 		//Testing if the function will output the correct result for the angles of an Scalene triangle with expected result of approximately  90, 36.9, 53.1.
 		TEST_METHOD(AnglesInsideTriangle_Scalene)
 		{
-			/*int side1 = 3;
-			int side2 = 4;
-			int side3 = 5;
-			float result1 = 90;
-			float result2 = 36.86989764584;
-			float result3 = 53.130102354156;
-
-			float* arrr[3] = analyzeAngle(side1, side2, side3);
-
-
-			Assert::AreEqual(result1, angle1);
-			Assert::AreEqual(result2, angle2);
-			Assert::AreEqual(result3, angle3);
-			*/
 			int side1 = 3;
 			int side2 = 4;
 			int side3 = 5;
@@ -160,11 +111,24 @@ namespace UnitTest1
 			Assert::AreEqual(result2, FuncResult[1]);
 			Assert::AreEqual(result3, FuncResult[2]);
 		}
-
 		TEST_METHOD(AnglesInsideTriangle_NotATriangle)
 			//Testing if the function will output the correct result for the angles of a non triangle input, which would return -1 on all cases.
 		{
 			int side1 = 3;
+			int side2 = 10;
+			int side3 = 5;
+			float result = -1; // desired results 
+
+			float* FuncResult = analyzeAngle(side1, side2, side3);
+
+			Assert::AreEqual(result, FuncResult[0]);// supposed to return all angles as being -1, since this combination of sides does not return proper angles and does not create a triangle
+			Assert::AreEqual(result, FuncResult[1]);
+			Assert::AreEqual(result, FuncResult[2]);
+		}
+		TEST_METHOD(AnglesInsideTriangle_NotATriangleNegativeNum)
+			//Testing if the function will output the correct result for the angles of a non triangle input, which would return -1 on all cases.
+		{
+			int side1 = -3;
 			int side2 = 10;
 			int side3 = 5;
 			float result = -1; // desired results 
@@ -181,22 +145,86 @@ namespace UnitTest1
 	{
 	public:
 		//Testing if the function will output the correct result for a valid rectangle case using point values for the 4 x,y coordinates at 1. 0,0| 2. 3,0| 3. 0,6| 4. 3,6|.
-		TEST_METHOD(ItIsRectangle)
+		TEST_METHOD(ItIsRectangle_FirstPossibility)
 		{
-			double xaxis[] = { 0, 3, 0, 3 };
-			double yaxis[] = { 0, 0, 6, 6 };
+			COORDINATES Rectangle_Points[4];
 
-			char* result = "It's a Rectangle";
-			Assert::AreEqual(result, analyzeRectangle(xaxis, yaxis));
+			Rectangle_Points[0].x_axis = 0;
+			Rectangle_Points[0].y_axis = 0;
+			Rectangle_Points[1].x_axis = 3;
+			Rectangle_Points[1].y_axis = 0;
+			Rectangle_Points[2].x_axis = 3;
+			Rectangle_Points[2].y_axis = 6;
+			Rectangle_Points[3].x_axis = 0;
+			Rectangle_Points[3].y_axis = 6;
+
+			char* result = "It's a Rectangle\n";
+			Assert::AreEqual(result, analyzeRectangle(Rectangle_Points));
 		}
 		//Testing if the function will output the correct result for an Invalid rectangle case using point values for the 4 x,y coordinates at 1. 5,0 | 2. 3,0 | 3. 0,6| 4. 3,6|.
+		TEST_METHOD(ItIsRectangle_SecondPossibility)
+		{
+			COORDINATES Rectangle_Points[4];
+
+			Rectangle_Points[0].x_axis = 0;
+			Rectangle_Points[0].y_axis = 0;
+			Rectangle_Points[1].x_axis = 3;
+			Rectangle_Points[1].y_axis = 0;
+			Rectangle_Points[2].x_axis = 0;
+			Rectangle_Points[2].y_axis = 6;
+			Rectangle_Points[3].x_axis = 3;
+			Rectangle_Points[3].y_axis = 6;
+
+			char* result = "It's a Rectangle\n";
+			Assert::AreEqual(result, analyzeRectangle(Rectangle_Points));
+		}
+		TEST_METHOD(ItIsRectangle_ThirdPossibility)
+		{
+			COORDINATES Rectangle_Points[4];
+
+			Rectangle_Points[0].x_axis = 0;
+			Rectangle_Points[0].y_axis = 0;
+			Rectangle_Points[1].x_axis = 3;
+			Rectangle_Points[1].y_axis = 6;
+			Rectangle_Points[2].x_axis = 0;
+			Rectangle_Points[2].y_axis = 6;
+			Rectangle_Points[3].x_axis = 3;
+			Rectangle_Points[3].y_axis = 0;
+
+			char* result = "It's a Rectangle\n";
+			Assert::AreEqual(result, analyzeRectangle(Rectangle_Points));
+		}
 		TEST_METHOD(ItIsNotRectangle)
 		{
-			double xaxis[] = { 5, 3, 0, 3 };
-			double yaxis[] = { 0, 0, 6, 6 };
+			COORDINATES Rectangle_Points[4];
 
-			char* result = "Not a Rectangle";
-			Assert::AreEqual(result, analyzeRectangle(xaxis, yaxis));
+			Rectangle_Points[0].x_axis = 5;
+			Rectangle_Points[0].y_axis = 0;
+			Rectangle_Points[1].x_axis = 3;
+			Rectangle_Points[1].y_axis = 0;
+			Rectangle_Points[2].x_axis = 0;
+			Rectangle_Points[2].y_axis = 6;
+			Rectangle_Points[3].x_axis = 3;
+			Rectangle_Points[3].y_axis = 6;
+
+			char* result = "Not a Rectangle\n";
+			Assert::AreEqual(result, analyzeRectangle(Rectangle_Points));
+		}
+		TEST_METHOD(RectangleInvalidEqualPoints)
+		{
+			COORDINATES Rectangle_Points[4];
+
+			Rectangle_Points[0].x_axis = 0;
+			Rectangle_Points[0].y_axis = 0;
+			Rectangle_Points[1].x_axis = 0;
+			Rectangle_Points[1].y_axis = 0;
+			Rectangle_Points[2].x_axis = 0;
+			Rectangle_Points[2].y_axis = 6;
+			Rectangle_Points[3].x_axis = 3;
+			Rectangle_Points[3].y_axis = 6;
+
+			char* result = "Error, two or more coordinates are equal\n";
+			Assert::AreEqual(result, analyzeRectangle(Rectangle_Points));
 		}
 	};
 }

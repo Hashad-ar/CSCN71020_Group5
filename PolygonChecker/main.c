@@ -26,6 +26,14 @@ int main() {
 		case 2: // added another case for the rectangle and intiliazed the x and y axis 
 			printf_s("Rectangle selected.\n");
 			getRectanglePoints(Rectangle_Points);
+			//Rectangle_Points[0].x_axis = 0;
+			//Rectangle_Points[0].y_axis = 0;
+			//Rectangle_Points[1].x_axis = 0;
+			//Rectangle_Points[1].y_axis = 0;
+			//Rectangle_Points[2].x_axis = 3;
+			//Rectangle_Points[2].y_axis = 6;
+			//Rectangle_Points[3].x_axis = 0;
+			//Rectangle_Points[3].y_axis = 6;
 			char* result2 = analyzeRectangle(Rectangle_Points);
 			printf_s("%s\n", result2);
 			break;
